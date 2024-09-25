@@ -284,10 +284,11 @@
 
     <section class="message-section" id="message">
             <h2>Send Us a Message</h2>
-            <form class="message-form" action="send_message.php" method="post">
+            <form class="message-form" action="send_message.php" method="post" autocomplete="off">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required onkeyup="showSuggestion(this.value)">
+                    <span id="suggestion">Suggestion: <p id="txtHint"></p></span>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
