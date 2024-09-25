@@ -14,11 +14,18 @@
         <h2>Your Submitted Message</h2>
 
         <?php
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
+
         if (isset($_GET['name']) && isset($_GET['email']) && isset($_GET['recipient']) && isset($_GET['message'])) {
-            $name = htmlspecialchars($_GET['name']);
-            $email = htmlspecialchars($_GET['email']);
-            $recipient = htmlspecialchars($_GET['recipient']);
-            $message = htmlspecialchars($_GET['message']);
+            $name = test_input($_GET['name']);
+            $email = test_input($_GET['email']);
+            $recipient = test_input($_GET['recipient']);
+            $message = test_input($_GET['message']);
 
             echo "<p><strong>Name:</strong> $name</p>";
             echo "<p><strong>Email:</strong> $email</p>";

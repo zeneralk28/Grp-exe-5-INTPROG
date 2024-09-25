@@ -8,13 +8,21 @@ $password = '';
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Validation
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
     // Check if form data is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = htmlspecialchars($_POST['name']);
-        $email = htmlspecialchars($_POST['email']);
-        $recipient = htmlspecialchars($_POST['recipient']);
-        $message = htmlspecialchars($_POST['message']);
+        $name = test_input($_POST['name']);
+        $email = test_input($_POST['email']);
+        $recipient = test_input($_POST['recipient']);
+        $message = test_input($_POST['message']);
 
         $stmt = $pdo->prepare("INSERT INTO messages (name, email, recipient, message) VALUES (:name, :email, :recipient, :message)");
         $stmt->bindParam(':name', $name);
