@@ -13,7 +13,7 @@
 
 :root {
     --bg-color: #000000;
-    --second-bg-color: ##161616;
+    --second-bg-color: #2e2e2e;
     --text-color: #fff;
     --main-color: #7b4bb7;
 }
@@ -52,9 +52,9 @@ html::-webkit-scrollbar-thumb {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 3rem 9%;
+    padding: 1rem 9%;
     background: var(--bg-color);
-    filter: drop-shadow(10px);
+    filter: drop-shadow(0px 4px 6px var(--main-color));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -343,12 +343,20 @@ span {
 .form-group input,
 .form-group select,
 .form-group textarea {
-    background: var(--second-bg-color);
+    background: var(--bg-color);
     border: 1px solid var(--main-color);
     border-radius: 0.5rem;
     padding: 1rem;
     font-size: 1.6rem;
-    color: #000000;
+    color: var(--text-color);
+}
+
+.form-group select {
+    background-color: var(--bg-color);
+}
+
+textarea {
+    resize: none;
 }
 
 .form-group input:focus,
