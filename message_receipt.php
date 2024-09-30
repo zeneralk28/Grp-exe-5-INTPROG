@@ -20,7 +20,7 @@
             $data = htmlspecialchars($data);
             return $data;
           }
-
+        //GET request
         if (isset($_GET['name']) && isset($_GET['email']) && isset($_GET['recipient']) && isset($_GET['message'])) {
             $name = test_input($_GET['name']);
             $email = test_input($_GET['email']);
